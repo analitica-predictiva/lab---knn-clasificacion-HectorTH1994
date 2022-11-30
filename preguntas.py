@@ -16,11 +16,11 @@ def pregunta_01():
     df = pd.read_csv("house-votes-84.csv", sep=",")
 
     # Cree un vector con la variable de respuesta ('party')
-    y = df.party.values
+    y = df.party
 
     # Extraiga las variables de entrada
-    X = df.drop("party", axis=1).values
-
+    df.drop("party", axis=1, inplace=True)
+    X = df
     # Importe el transformador OrdinalEncoder
     from sklearn.preprocessing import OrdinalEncoder
 
@@ -39,7 +39,7 @@ def pregunta_01():
 
     # Retorne el score del clasificador
     return knn.score(X, y)
-pregunta_01()
+#pregunta_01()
 
 def pregunta_02():
     """
@@ -50,11 +50,11 @@ def pregunta_02():
     df = pd.read_csv("house-votes-84.csv", sep=",")
 
     # Cree un vector con la variable de respuesta ('party')
-    y = df.party.values
+    y = df.party
 
     # Extraiga las variables de entrada
-    X = df.drop("party", axis=1).values
-
+    df.drop("party", axis=1, inplace=True)
+    X = df
     # Importe el transformador OrdinalEncoder
     from sklearn.preprocessing import OrdinalEncoder
 
@@ -79,4 +79,4 @@ def pregunta_02():
 
     # Retorne la matriz de confusión
     return confusion_matrix(y, y_pred)
-pregunta_02()
+print(pregunta_02().tolist())
